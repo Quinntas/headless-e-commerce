@@ -1,15 +1,18 @@
+"use client"
+
 import Image from "next/image";
-import {getProduct} from "../../../../lib/api";
-import {notFound} from "next/navigation";
 import {ProductParams} from "../../../../types/product";
+import {useState} from "react";
+import {useProduct} from "../../../../lib/api";
+import {notFound} from "next/navigation";
 
-export const runtime = 'edge';
 
+export default function Product({params}: ProductParams) {
+    const {product, isError, isLoading} = useProduct(params.slug)
+    const [quantity, setQuantity] = useState(1)
 
-export default async function Product({params}: ProductParams) {
-    const product = await getProduct(params.slug);
-
-    if (!product) notFound();
+    if (isLoading) return <p>Loading...</p>
+    if (isError) notFound()
 
     return (
         <section className="overflow-hidden bg-white py-1 font-poppins">
@@ -25,7 +28,6 @@ export default async function Product({params}: ProductParams) {
                             <div className="flex-wrap hidden md:flex ">
                                 {product.image.gallery.map((image, index) => (
                                     <div className="w-1/2 p-2 sm:w-1/4" key={index}>
-
                                         <a href="#"
                                            className="block border border-orange-300 dark:border-transparent dark:hover:border-orange-300 hover:border-orange-300">
                                             <Image width={0} height={0} sizes={"100vw"}
@@ -68,7 +70,7 @@ export default async function Product({params}: ProductParams) {
                                             <span className="m-auto text-2xl font-light">-</span>
                                         </button>
                                         <input type="number"
-                                               className="flex items-center w-full font-normal text-center text-black placeholder-black bg-white outline-none focus:outline-none text-md hover:text-black focus:"
+                                               className="flex border-transparent focus:border-transparent focus:ring-0 items-center w-full font-normal text-center text-black placeholder-black bg-white outline-none focus:outline-none text-md hover:text-black "
                                                placeholder="1"/>
                                         <button
                                             className="w-20 h-full text-black rounded-r outline-none cursor-pointer ">

@@ -1,4 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {Plugin} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
     content: [
         './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -17,6 +19,11 @@ module.exports = {
     plugins: [
         // ...
         require('@tailwindcss/aspect-ratio'),
-        require('@tailwindcss/forms')
+        require('@tailwindcss/forms'),
+        plugin(function ({addBase}) {
+            addBase({
+                '[type="search"]::-webkit-search-cancel-button': {display: 'none'},
+            })
+        }),
     ],
 }
