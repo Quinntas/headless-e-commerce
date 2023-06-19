@@ -5,6 +5,16 @@
 /.pnp
 .pnp.js
 
+.env
+
+.idea
+
+.idea/*
+
+/.idea/*
+
+yarn.lock
+
 # testing
 /coverage
 
