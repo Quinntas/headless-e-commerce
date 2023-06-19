@@ -2,17 +2,31 @@
 
 import Image from "next/image";
 import {ProductParams} from "../../../../types/product";
-import {useState} from "react";
-import {useProduct} from "../../../../lib/api";
+import { Ring } from '@uiball/loaders'
 import {notFound} from "next/navigation";
-
+import {useProduct} from "../../../../lib/api";
+import {useState} from "react";
 
 export default function Product({params}: ProductParams) {
     const {product, isError, isLoading} = useProduct(params.slug)
     const [quantity, setQuantity] = useState(1)
 
-    if (isLoading) return <p>Loading...</p>
-    if (isError) notFound()
+    if (isLoading) return <div className="grid h-screen px-4 bg-white place-content-center">
+        <Ring/>
+    </div>
+    // if (isError) notFound()
+
+    function handleDownClick () {
+        if (quantity-1 <= 0){
+            setQuantity(1)
+            return
+        }
+        setQuantity(quantity-1)
+    }
+    
+    function handleUpClick () {
+        setQuantity(quantity+1)
+    }
 
     return (
         <section className="overflow-hidden bg-white py-1 font-poppins">
@@ -66,13 +80,15 @@ export default function Product({params}: ProductParams) {
                                     <div
                                         className="relative flex flex-row w-full h-10  bg-transparent rounded-lg border border-black rounded">
                                         <button
+                                            onClick={handleDownClick}
                                             className="w-20 h-full text-black  rounded-l outline-none cursor-pointer">
                                             <span className="m-auto text-2xl font-light">-</span>
                                         </button>
                                         <input type="number"
                                                className="flex border-transparent focus:border-transparent focus:ring-0 items-center w-full font-normal text-center text-black placeholder-black bg-white outline-none focus:outline-none text-md hover:text-black "
-                                               placeholder="1"/>
+                                               placeholder={String(quantity)}/>
                                         <button
+                                            onClick={handleUpClick}
                                             className="w-20 h-full text-black rounded-r outline-none cursor-pointer ">
                                             <span className="m-auto text-2xl font-light">+</span>
                                         </button>
