@@ -1,4 +1,5 @@
 import {AiOutlineClose} from "react-icons/ai";
+import Link from "next/link";
 
 export default function CartModal({modalStateChange, modalState}:
                                       { modalStateChange: () => void, modalState: boolean }) {
@@ -16,9 +17,20 @@ export default function CartModal({modalStateChange, modalState}:
                         <AiOutlineClose color="black" size="20"/>
                     </button>
                 </div>
-                <div className="bg-black rounded w-9/12 h-10">
-            
-                </div>
+                <Link
+                    href=""
+                >
+                    <div
+                        className="w-[350px] h-[55px] px-5 py-3 md:py-4 flex items-center justify-center bg-heading rounded-md text-sm sm:text-base bg-black text-white focus:outline-none transition duration-200 hover:bg-gray-950 ">
+                    <span className="w-full pe-5 -mt-0.5 py-0.5">
+						{"Finalizar Compra"}
+					</span>
+                        <span className="ms-auto flex-shrink-0 -mt-0.5 py-0.5">
+						<span className="border-s border-white pe-5 py-0.5"/>
+                            {123}
+					</span>
+                    </div>
+                </Link>
             </div>
         </div>
     </>

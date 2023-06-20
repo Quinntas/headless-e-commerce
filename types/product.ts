@@ -12,6 +12,18 @@ export interface Product {
     }
 }
 
+export interface FrontPageProduct {
+    id: string
+    name: string
+    price: number
+    sale: number
+    slug: string
+    image: {
+        cover: string
+        hover: string
+    }
+}
+
 export interface ProductParams {
     params: {
         slug: string

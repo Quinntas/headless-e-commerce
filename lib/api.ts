@@ -1,7 +1,28 @@
-import {Product} from "../types/product";
+import {FrontPageProduct, Product} from "../types/product";
 import useSWR from "swr";
 
 export const fetcher = (...args: [any]) => fetch(...args).then((res) => res.json())
+
+export function useFrontPageProducts() {
+    const {data, error, isLoading} = useSWR<FrontPageProduct[], Error>(`/api/product/frontpage}`, fetcher)
+    return {
+        products: [
+            {
+                id: "1",
+                name: 'Earthen Bottle',
+                slug: 'earthen-bottle',
+                sale: 32,
+                price: 32,
+                image: {
+                    cover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+                    hover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg'
+                }
+            },
+        ],
+        isLoading,
+        isError: !!error
+    }
+}
 
 export function useProduct(slug: string): { product: Product, isLoading: boolean, isError: boolean } {
     const {data, error, isLoading} = useSWR<Product, Error>(`/api/product/${slug}`, fetcher)
