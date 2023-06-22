@@ -18,7 +18,8 @@ export default function CartModal({modalStateChange, modalState}:
                     </button>
                 </div>
                 <Link
-                    href=""
+                    href="/cart"
+                    onClick={() => modalStateChange()}
                 >
                     <div
                         className="w-[350px] h-[55px] px-5 py-3 md:py-4 flex items-center justify-center bg-heading rounded-md text-sm sm:text-base bg-black text-white focus:outline-none transition duration-200 hover:bg-gray-950 ">

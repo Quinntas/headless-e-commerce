@@ -2,38 +2,36 @@
 
 import Image from "next/image";
 import {ProductParams} from "../../../../types/product";
-import { Ring } from '@uiball/loaders'
-import {notFound} from "next/navigation";
 import {useProduct} from "../../../../lib/api";
 import {useState} from "react";
+import Loading from "@/components/loading";
 
 export default function Product({params}: ProductParams) {
     const {product, isError, isLoading} = useProduct(params.slug)
     const [quantity, setQuantity] = useState(1)
 
-    if (isLoading) return <div className="grid h-screen px-4 bg-white place-content-center">
-        <Ring/>
-    </div>
+    if (isLoading) return <Loading/>
+
     // if (isError) notFound()
 
-    function handleDownClick () {
-        if (quantity-1 <= 0){
+    function handleDownClick() {
+        if (quantity - 1 <= 0) {
             setQuantity(1)
             return
         }
-        setQuantity(quantity-1)
+        setQuantity(quantity - 1)
     }
-    
-    function handleUpClick () {
-        setQuantity(quantity+1)
+
+    function handleUpClick() {
+        setQuantity(quantity + 1)
     }
 
     return (
-        <section className="overflow-hidden bg-white py-1 font-poppins">
+        <section className="overflow-hidden bg-white py-1 font-poppins h-auto ">
             <div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
                 <div className="flex flex-wrap -mx-4">
                     <div className="w-full px-4 md:w-1/2 ">
-                        <div className="sticky top-0 z-50 overflow-hidden ">
+                        <div className="sticky top-0 z-1 overflow-hidden ">
                             <div className="relative mb-6 lg:mb-10 lg:h-2/4 ">
                                 <Image width={0} height={0} sizes={"100vw"}
                                        src={product.image.ogImageUrl} alt="og-image"
@@ -85,6 +83,7 @@ export default function Product({params}: ProductParams) {
                                             <span className="m-auto text-2xl font-light">-</span>
                                         </button>
                                         <input type="number"
+                                               min="1"
                                                className="flex border-transparent focus:border-transparent focus:ring-0 items-center w-full font-normal text-center text-black placeholder-black bg-white outline-none focus:outline-none text-md hover:text-black "
                                                placeholder={String(quantity)}/>
                                         <button

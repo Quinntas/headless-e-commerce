@@ -1,36 +1,36 @@
 "use client";
 
-import {AiOutlineArrowRight} from "react-icons/ai";
+import {useProducts} from "../../../lib/api";
+import {useRouter, useSearchParams} from "next/navigation";
+import SearchBar from "@/components/searchBar";
+import ProductGrid from "@/components/productGrid";
+import {useState} from "react";
+import Loading from "@/app/loading";
 
 
 export default function Page() {
-    return <form>
-        <div className="bg-white flex items-center justify-center py-5 ">
-            <div className="w-2/4 relative">
-                <label
-                    htmlFor="default-search"
-                    className="relative block overflow-hidden  rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-black focus-within:ring-1 focus-within:ring-black"
-                >
-                    <input
-                        type="search"
-                        id="Search"
-                        placeholder="Search"
-                        required={true}
-                        className="peer h-8 w-11/12 border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm text-black"
-                    />
+    const query = useSearchParams();
+    const router = useRouter();
 
-                    <button type="submit"
-                            className="w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-1 ">
-                        <AiOutlineArrowRight color={"black"} className="w-8 h-8"
-                        />
-                    </button>
+    const [searchQuery, setSearchQuery] = useState('Search')
+    const {products, isError, isLoading, mutate} = useProducts(query, {
+        revalidateOnFocus: false,
+        revalidateOnMount: false,
+        revalidateOnReconnect: false,
+        refreshWhenOffline: false,
+        refreshWhenHidden: false,
+        refreshInterval: 0
+    })
 
-                    <span
-                        className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs"
-                    >
-    Search
-  </span>
-                </label></div>
-        </div>
-    </form>
+    function handleSearch(query: string) {
+        setSearchQuery(query.toLowerCase())
+        router.push('/search?search=' + searchQuery, {shallow: true})
+    }
+
+    if (isLoading) return <Loading/>
+
+    return <div className="bg-white h-auto">
+        <SearchBar handleSearch={handleSearch} searchQuery={searchQuery} mutate={mutate}/>
+        <ProductGrid products={products}/>
+    </div>
 }
