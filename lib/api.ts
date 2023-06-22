@@ -30,6 +30,86 @@ const productsSeed = [
             cover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
             hover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg'
         }
+    }, {
+        id: "1",
+        name: 'Earthen Bottle',
+        slug: 'earthen-bottle',
+        sale: 32,
+        price: 32,
+        image: {
+            cover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+            hover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg'
+        }
+    }, {
+        id: "1",
+        name: 'Earthen Bottle',
+        slug: 'earthen-bottle',
+        sale: 32,
+        price: 32,
+        image: {
+            cover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+            hover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg'
+        }
+    }, {
+        id: "1",
+        name: 'Earthen Bottle',
+        slug: 'earthen-bottle',
+        sale: 32,
+        price: 32,
+        image: {
+            cover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+            hover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg'
+        }
+    }, {
+        id: "1",
+        name: 'Earthen Bottle',
+        slug: 'earthen-bottle',
+        sale: 32,
+        price: 32,
+        image: {
+            cover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+            hover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg'
+        }
+    }, {
+        id: "1",
+        name: 'Earthen Bottle',
+        slug: 'earthen-bottle',
+        sale: 32,
+        price: 32,
+        image: {
+            cover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+            hover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg'
+        }
+    }, {
+        id: "1",
+        name: 'Earthen Bottle',
+        slug: 'earthen-bottle',
+        sale: 32,
+        price: 32,
+        image: {
+            cover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+            hover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg'
+        }
+    }, {
+        id: "1",
+        name: 'Earthen Bottle',
+        slug: 'earthen-bottle',
+        sale: 32,
+        price: 32,
+        image: {
+            cover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+            hover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg'
+        }
+    }, {
+        id: "1",
+        name: 'Earthen Bottle',
+        slug: 'earthen-bottle',
+        sale: 32,
+        price: 32,
+        image: {
+            cover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+            hover: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg'
+        }
     },
 ]
 

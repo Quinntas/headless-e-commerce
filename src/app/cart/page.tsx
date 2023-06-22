@@ -38,7 +38,7 @@ export default function Cart() {
 
                                     <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
                                         <div>
-                                            <dd className="inline"> R${product.price}</dd>
+                                            <dd className="inline"> R$ {product.price}</dd>
                                         </div>
                                     </dl>
                                 </div>
@@ -83,12 +83,12 @@ export default function Cart() {
                             <dl className="space-y-0.5 text-sm text-gray-700">
                                 <div className="flex justify-between">
                                     <dt>Subtotal</dt>
-                                    <dd>R${totals.subtotal}</dd>
+                                    <dd>R$ {totals.subtotal}</dd>
                                 </div>
 
                                 <div className="flex justify-between !text-base font-medium">
                                     <dt>Total</dt>
-                                    <dd>R${totals.total}</dd>
+                                    <dd>R$ {totals.total}</dd>
                                 </div>
                             </dl>
 

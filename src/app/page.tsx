@@ -18,7 +18,7 @@ export default function Home() {
         <Head>
             <Link rel="preload" href="/api/product" as="fetch"/>
         </Head>
-        <section className="bg-white h-auto">
+        <section className="bg-white h-full w-full">
             <ProductGrid products={products}/>
         </section>
     </>

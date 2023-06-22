@@ -249,6 +249,11 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-20.3.1.tgz"
   integrity sha512-EhcH/wvidPy1WeML3TtYFGR83UzjxeWRen9V402T8aUGYsCHOmfoisV3ZSg03gAFIbLq8TnWOJ0f4cALtnSEUg==
 
+"@types/overlayscrollbars@^1.12.1":
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/@types/overlayscrollbars/-/overlayscrollbars-1.12.1.tgz#fb637071b545834fb12aea94ee309a2ff4cdc0a8"
+  integrity sha512-V25YHbSoKQN35UasHf0EKD9U2vcmexRSp78qa8UglxFH8H3D+adEa9zGZwrqpH4TdvqeMrgMqVqsLB4woAryrQ==
+
 "@types/prop-types@*":
   version "15.7.5"
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
@@ -2049,6 +2054,16 @@ optionator@^0.9.1:
     prelude-ls "^1.2.1"
     type-check "^0.4.0"
     word-wrap "^1.2.3"
+
+overlayscrollbars-react@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/overlayscrollbars-react/-/overlayscrollbars-react-0.5.0.tgz#0272bdc6304c7228a58d30e5b678e97fd5c5d8dd"
+  integrity sha512-uCNTnkfWW74veoiEv3kSwoLelKt4e8gTNv65D771X3il0x5g5Yo0fUbro7SpQzR9yNgi23cvB2mQHTTdQH96pA==
+
+overlayscrollbars@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/overlayscrollbars/-/overlayscrollbars-2.2.0.tgz#589e27c570a1fc5f08e26860ed0ec9d3133d4aac"
+  integrity sha512-Sx7gI2TEx+TFvFXJq4BUYM5R4bfWQR2ertdxyzAQ589ouPKKifMBU0/opdCb1bUC7x6sMiSNI1u9ngC0RbMnBg==
 
 p-limit@^3.0.2:
   version "3.1.0"
