@@ -39,13 +39,23 @@ export const cartSlice = createSlice({
             const total = state.products.reduce((acc, product) => acc + product.price * product.quantity, 0);
 
             if (foundIndex === -1) {
-                state.totals.subtotal = total;
-                state.totals.total = total
                 state.products.push(action.payload);
+                state.totals.subtotal = total + action.payload.price
+                state.totals.total = total + action.payload.price
             } else {
-                state.totals.subtotal = total;
-                state.totals.total = total
+                state.totals.subtotal = total + action.payload.price
+                state.totals.total = total + action.payload.price
                 state.products[foundIndex].quantity += action.payload.quantity;
+            }
+        },
+        remove: (state, action: PayloadAction<CartProduct>) => {
+            const foundIndex = state.products.findIndex(product => product.id === action.payload.id);
+
+            if (foundIndex !== -1) {
+                const price = state.products[foundIndex].price;
+                state.products.splice(foundIndex, 1);
+                state.totals.total -= price * action.payload.quantity;
+                state.totals.subtotal -= price * action.payload.quantity;
             }
         },
         decrement: (state, action: PayloadAction<CartProduct>) => {
@@ -53,7 +63,7 @@ export const cartSlice = createSlice({
 
             if (foundIndex !== -1) {
                 const price = state.products[foundIndex].price;
-                state.products.splice(foundIndex, 1);
+                state.products[foundIndex].quantity -= 1
                 state.totals.total -= price;
                 state.totals.subtotal -= price;
             }
@@ -64,6 +74,7 @@ export const cartSlice = createSlice({
 export const {
     increment,
     decrement,
+    remove,
     reset,
 } = cartSlice.actions;
 

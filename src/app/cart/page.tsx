@@ -1,7 +1,7 @@
 "use client";
 
 import {useAppDispatch, useAppSelector} from "@/store/hooks";
-import {decrement, selectProducts, selectTotals} from "@/store/cartSlice";
+import {remove, selectProducts, selectTotals} from "@/store/cartSlice";
 import {CartProduct} from "../../../types/product";
 import Image from "next/image";
 
@@ -54,7 +54,7 @@ export default function Cart() {
 
                                     <button
                                         className="text-gray-600 transition hover:text-red-600"
-                                        onClick={() => dispatch(decrement(product))}
+                                        onClick={() => dispatch(remove(product))}
                                     >
                                         <span className="sr-only">Remove item</span>
 
