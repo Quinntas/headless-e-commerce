@@ -16,6 +16,7 @@ export interface Product {
 export interface CartProduct {
     id: string
     name: string
+    slug?: string
     price: number
     quantity: number
     image: string
