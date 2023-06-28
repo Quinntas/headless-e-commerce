@@ -80,7 +80,7 @@ export default function CartModal({
                                 </>
                             ))}
                     </ScrollBar>
-                    <div className="px-5 md:px-7 pt-2 pb-5 md:pb-6">
+                    <div className="pr-4 pl-4 pb-5">
                         <Link href="/cart" onClick={() => modalStateChange()}>
                             <div
                                 className="w-full h-[55px] px-5 py-3 md:py-4 flex items-center justify-center bg-heading rounded-md text-sm sm:text-base bg-black text-white focus:outline-none transition duration-200 hover:bg-gray-950 ">

@@ -58,6 +58,7 @@ export const cartSlice = createSlice({
                 state.totals.subtotal -= price * action.payload.quantity;
             }
         },
+
         decrement: (state, action: PayloadAction<CartProduct>) => {
             const foundIndex = state.products.findIndex(product => product.id === action.payload.id);
 

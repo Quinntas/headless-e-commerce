@@ -5,11 +5,11 @@ import Loading from "@/components/loading";
 import {CartProduct, ProductParams} from "../../../../types/product";
 import {useProduct} from "../../../../lib/api";
 import {useState} from "react";
-import {useAppDispatch} from "@/store/hooks";
-import {increment} from "@/store/cartSlice";
-import Link from "next/link";
+import {useAppDispatch, useAppSelector} from "@/store/hooks";
+import {increment, selectProducts} from "@/store/cartSlice";
 
 export default function Product({params}: ProductParams) {
+    const products = useAppSelector(selectProducts);
     const dispatch = useAppDispatch();
 
     const {product, isError, isLoading} = useProduct(params.slug);
@@ -18,6 +18,13 @@ export default function Product({params}: ProductParams) {
     if (isLoading) return <Loading/>;
 
     // if (isError) notFound()
+
+    function countProductQuantityInCart() {
+        const foundIndex = products.findIndex(product => product.id === product.id);
+        if (foundIndex === -1) return 0;
+        return products[foundIndex].quantity;
+    }
+
 
     function handleDownClick() {
         if (quantity - 1 <= 0) {
@@ -103,13 +110,15 @@ export default function Product({params}: ProductParams) {
                                 >
                                     Quantity
                                 </label>
-                                <label
-                                    htmlFor=""
-                                    className="w-full text-13 font-normal text-gray-500"
-                                >
-                                    {" "}
-                                    (1 in cart)
-                                </label>
+                                {
+                                    countProductQuantityInCart() > 0 ? (<label
+                                        htmlFor=""
+                                        className="w-full text-13 font-normal text-gray-500"
+                                    >
+                                        {" "}
+                                        ({countProductQuantityInCart()} in cart)
+                                    </label>) : null
+                                }
                                 <div className="w-32 mb-8 ">
                                     <div
                                         className="relative flex flex-row w-full h-10  bg-transparent rounded-lg border border-black rounded">
@@ -143,12 +152,11 @@ export default function Product({params}: ProductParams) {
                                     </button>
                                 </div>
                                 <div className="w-full px-4 mb-4 lg:mb-0 lg:w-1/2">
-                                    <Link
+                                    <button
                                         onClick={() => handleAddToCart()}
-                                        href="/cart"
                                         className="flex items-center justify-center w-full p-4  border border-black rounded-md  hover:shadow-md text-black bg-white">
                                         Comprar agora
-                                    </Link>
+                                    </button>
                                 </div>
                             </div>
                             <div className="pt-5 mb-8">
