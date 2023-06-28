@@ -17,7 +17,7 @@ export default function Products({products}: { products: FrontPageProduct[] }) {
                             loading="lazy"
                             src={product.image.cover}
                             alt={'product_image_' + product.id}
-                            className="h-full w-full object-cover object-center opacity-100 transition group-hover:opacity-0"
+                            className="h-full w-full object-cover object-center opacity-100 transition delay-50 group-hover:opacity-0"
                         />
                         <Image
                             width={0}
@@ -27,7 +27,7 @@ export default function Products({products}: { products: FrontPageProduct[] }) {
                             loading="lazy"
                             src={product.image.hover}
                             alt={'product_image_two_' + product.id}
-                            className="h-full w-full object-cover object-center opacity-0 transition group-hover:opacity-100"
+                            className="h-full w-full object-cover object-center opacity-0 transition delay-50 group-hover:opacity-100"
                         />
                     </div>
                     <h3 className="mt-4 text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">{product.name}</h3>

@@ -24,7 +24,7 @@ export default function CartModal({
                 } h-screen fixed opacity-30 transition duration-300`}
             ></div>
             <div
-                className={`opacity-100 bg-white fixed right-0 top-0 z-50 w-[400px] h-full border ${
+                className={`opacity-100 bg-white fixed right-0 top-0 z-50 w-[370px] h-full border ${
                     modalState ? "" : "translate-x-full"
                 } shadow-2xl duration-300 ease-in-out transition-transform`}
             >
@@ -83,7 +83,7 @@ export default function CartModal({
                     <div className="px-5 md:px-7 pt-2 pb-5 md:pb-6">
                         <Link href="/cart" onClick={() => modalStateChange()}>
                             <div
-                                className="w-[365px] h-[55px] px-5 py-3 md:py-4 flex items-center justify-center bg-heading rounded-md text-sm sm:text-base bg-black text-white focus:outline-none transition duration-200 hover:bg-gray-950 ">
+                                className="w-full h-[55px] px-5 py-3 md:py-4 flex items-center justify-center bg-heading rounded-md text-sm sm:text-base bg-black text-white focus:outline-none transition duration-200 hover:bg-gray-950 ">
                   <span className="w-full pe-5 -mt-0.5 py-0.5">
                     {"Finalizar Compra"}
                   </span>

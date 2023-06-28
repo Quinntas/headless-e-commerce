@@ -148,7 +148,7 @@ export function useProduct(slug: string): { product: Product, isLoading: boolean
             price: 100,
             sale: 60,
             stock: 10,
-            slug: 'products.tsx-1',
+            slug: 'earthen-bottle',
             image: {
                 ogImageUrl: 'https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg',
                 gallery: [
