@@ -6,9 +6,9 @@ export default function Products({products}: { products: FrontPageProduct[] }) {
     return (
         <>
             {products.map((product) => (
-                <Link key={product.id} href={"/product/" + product.slug} className="group">
+                <Link key={product.id} href={"/product/" + product.slug} className="group  w-full h-full">
                     <div
-                        className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-h-8 xl:aspect-w-7">
+                        className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-white flex-col shadow ">
                         <Image
                             width={0}
                             height={0}
@@ -17,7 +17,7 @@ export default function Products({products}: { products: FrontPageProduct[] }) {
                             loading="lazy"
                             src={product.image.cover}
                             alt={'product_image_' + product.id}
-                            className="h-full w-full object-cover object-center opacity-100 transition delay-50 group-hover:opacity-0"
+                            className="h-full w-full object-cover object-center opacity-100 transition delay-50  group-hover:opacity-0"
                         />
                         <Image
                             width={0}
@@ -27,7 +27,7 @@ export default function Products({products}: { products: FrontPageProduct[] }) {
                             loading="lazy"
                             src={product.image.hover}
                             alt={'product_image_two_' + product.id}
-                            className="h-full w-full object-cover object-center opacity-0 transition delay-50 group-hover:opacity-100"
+                            className="h-full w-full object-cover object-center opacity-0 transition  delay-50 group-hover:opacity-100"
                         />
                     </div>
                     <h3 className="mt-4 text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">{product.name}</h3>
