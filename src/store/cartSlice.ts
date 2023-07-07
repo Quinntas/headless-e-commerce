@@ -40,8 +40,10 @@ export const cartSlice = createSlice({
         state.totals.subtotal = total + action.payload.price;
         state.totals.total = total + action.payload.price;
       } else {
-        state.totals.subtotal = total + action.payload.price;
-        state.totals.total = total + action.payload.price;
+        state.totals.subtotal =
+          total + action.payload.price * action.payload.quantity;
+        state.totals.total =
+          total + action.payload.price * action.payload.quantity;
         state.products[foundIndex].quantity += action.payload.quantity;
       }
     },
@@ -52,9 +54,10 @@ export const cartSlice = createSlice({
 
       if (foundIndex !== -1) {
         const price = state.products[foundIndex].price;
+        const quantity = state.products[foundIndex].quantity;
         state.products.splice(foundIndex, 1);
-        state.totals.total -= price * action.payload.quantity;
-        state.totals.subtotal -= price * action.payload.quantity;
+        state.totals.total -= price * quantity;
+        state.totals.subtotal -= price * quantity;
       }
     },
 
