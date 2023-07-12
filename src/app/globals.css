@@ -24,15 +24,6 @@
     }
 }
 
-body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-            to bottom,
-            transparent,
-            rgb(var(--background-end-rgb))
-    ) rgb(var(--background-start-rgb));
-}
-
 /* Custom scrollbar design starts from here */
 .os-theme-thin > .os-scrollbar-vertical {
     bottom: 14px;
