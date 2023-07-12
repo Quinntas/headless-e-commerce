@@ -44,10 +44,10 @@ export default function CartModal({
 
                     <ScrollBar
                         className={"cart-scrollbar w-full h-full flex flex-col justify-between  pt-5 pb-5 flex flex-grow"}>
-                        {products &&
-                            products.map((product) => (
-                                <>
-                                    <div className="flex items-center pr-4 pl-4" key={product.id}>
+                        <ul className="space-y-4">
+                            {products &&
+                                products.map((product) => (
+                                    <li key={product.id} className="flex items-center pr-4 pl-4">
                                         <Image
                                             width={112}
                                             height={122}
@@ -55,7 +55,7 @@ export default function CartModal({
                                             quality={60}
                                             loading="eager"
                                             alt={""}
-                                            className="h-112 w-112 rounded-md"
+                                            className="h-112 w-112 rounded-md drop-shadow"
                                             src={product.image}
                                         />
                                         <div className="flex items-center justify-between w-full">
@@ -76,9 +76,9 @@ export default function CartModal({
                                                 <span>R$ {product.quantity * product.price}</span>
                                             </div>
                                         </div>
-                                    </div>
-                                </>
-                            ))}
+                                    </li>
+                                ))}
+                        </ul>
                     </ScrollBar>
                     <div className="pr-4 pl-4 pb-5">
                         <Link href="/cart" onClick={() => modalStateChange()}>

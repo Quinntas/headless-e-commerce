@@ -1,14 +1,32 @@
 "use client";
 
 import {useAppDispatch, useAppSelector} from "@/store/hooks";
-import {remove, selectProducts, selectTotals} from "@/store/cartSlice";
+import {decrement, increment, remove, selectProducts, selectTotals} from "@/store/cartSlice";
 import {CartProduct} from "../../../types/product";
 import Image from "next/image";
 
 export default function Cart() {
+
     const products = useAppSelector(selectProducts);
     const totals = useAppSelector(selectTotals);
     const dispatch = useAppDispatch();
+
+
+    function handleDownClick(product: CartProduct) {
+        dispatch(decrement(product))
+    }
+
+    function handleInput(e: any) {
+
+    }
+
+    function handleUpClick(product: CartProduct) {
+        let productClone: CartProduct = {
+            ...product,
+            quantity: 1
+        }
+        dispatch(increment(productClone))
+    }
 
     return <div className="bg-white h-screen">
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -44,13 +62,29 @@ export default function Cart() {
                                 </div>
 
                                 <div className="flex flex-1 items-center justify-end gap-2">
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        disabled={true}
-                                        value={product.quantity}
-                                        className="h-8 w-12 rounded border-gray-300 bg-gray-50 p-0 text-center text-xs text-gray-600 focus:ring-black focus:border-white"
-                                    />
+                                    <div
+                                        className="flex flex-row h-9 w-[100px] bg-transparent rounded-lg border border-black rounded">
+                                        <button
+                                            className="w-full h-full text-black rounded-l outline-none cursor-pointer"
+
+                                            onClick={() => handleDownClick(product)}
+                                        >
+                                            <span className="m-auto text-2xl font-light">-</span>
+                                        </button>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            className="flex w-full h-full border-transparent focus:border-transparent focus:ring-0 items-center font-normal text-center text-black placeholder-black bg-white outline-none focus:outline-none text-md hover:text-black "
+                                            placeholder={String(product.quantity)}
+                                            disabled={true}
+                                        />
+                                        <button
+                                            className="w-full h-full text-black rounded-r outline-none cursor-pointer "
+                                            onClick={() => handleUpClick(product)}
+                                        >
+                                            <span className="m-auto text-2xl font-light">+</span>
+                                        </button>
+                                    </div>
 
                                     <button
                                         className="text-gray-600 transition hover:text-red-600"

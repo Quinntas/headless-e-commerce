@@ -34,6 +34,15 @@ export default function Product({params}: ProductParams) {
         setQuantity(quantity - 1);
     }
 
+    function handleInput(e: any) {
+        const value = parseInt(e.target.value)
+        if (value <= 1) {
+            setQuantity(1);
+            return;
+        }
+        setQuantity(value);
+    }
+
     function handleUpClick() {
         setQuantity(quantity + 1);
     }
@@ -131,6 +140,7 @@ export default function Product({params}: ProductParams) {
                                         <input
                                             type="number"
                                             min="1"
+                                            onInput={handleInput}
                                             className="flex border-transparent focus:border-transparent focus:ring-0 items-center w-full font-normal text-center text-black placeholder-black bg-white outline-none focus:outline-none text-md hover:text-black "
                                             placeholder={String(quantity)}
                                         />
