@@ -1,6 +1,6 @@
 import {remove, selectProducts, selectTotals} from "@/store/cartSlice";
 import {useAppDispatch, useAppSelector} from "@/store/hooks";
-import {IoClose} from "react-icons/io5";
+import {IoClose, IoTrash} from "react-icons/io5";
 import ScrollBar from "@/components/scrollbar";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,7 +53,7 @@ export default function CartModal({
                 </div>
                 {isCartEmpty() ?
                     <div className={"w-full h-full flex flex-col justify-center items-center"}>
-                        <h2 className={"font-medium text-2xl overflow-hidden"}>Seesh, you cart is empty :(</h2>
+                        <h2 className={"font-semibold text-2xl overflow-hidden"}>Seesh, you cart is empty :(</h2>
                         <Image
                             src={"/images/emptyCartModal.svg"}
                             alt={"Your Cart is Empty"}
@@ -69,23 +69,24 @@ export default function CartModal({
                             <ul className="space-y-4">
                                 {products &&
                                     products.map((product) => (
-                                        <li key={product.id} className="flex items-center pr-4 pl-4">
-                                            <div className={"w-auto h-auto relative group"}>
+                                        <li key={product.id}
+                                            className="flex w-auto h-auto items-center pr-4 pl-4">
+                                            <div className={"relative group"}>
                                                 <button type={"button"}
                                                         onClick={() => removeItem(product)}
                                                 >
                                                     <Image
-                                                        width={170}
-                                                        height={170}
+                                                        width={90}
+                                                        height={100}
                                                         quality={60}
                                                         alt={""}
                                                         className="rounded-md shadow transition group-hover:blur-sm "
                                                         src={product.image}
                                                     />
 
-                                                    <IoClose
+                                                    <IoTrash
                                                         color="black"
-                                                        size="35"
+                                                        size="25"
                                                         className={"absolute font-light top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition "}
                                                     />
                                                 </button>
