@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import {FrontPageProduct} from "../../types/product";
+import {Product} from "../../types/product";
 
-export default function Products({products}: { products: FrontPageProduct[] }) {
+export default function Products({products}: { products: Product[] }) {
     return (
         <>
             {products.map((product) => (
@@ -15,7 +15,7 @@ export default function Products({products}: { products: FrontPageProduct[] }) {
                             sizes={'100vw'}
                             quality={75}
                             loading="lazy"
-                            src={product.image.cover}
+                            src={product.gallery.cover}
                             alt={'product_image_' + product.id}
                             className="h-full w-full object-cover object-center opacity-100 transition delay-50  group-hover:opacity-0"
                         />
@@ -25,7 +25,7 @@ export default function Products({products}: { products: FrontPageProduct[] }) {
                             sizes={'100vw'}
                             quality={75}
                             loading="lazy"
-                            src={product.image.hover}
+                            src={product.gallery.hover}
                             alt={'product_image_two_' + product.id}
                             className="h-full w-full object-cover object-center opacity-0 transition  delay-50 group-hover:opacity-100"
                         />

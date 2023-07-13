@@ -6,9 +6,11 @@ export interface Product {
     sale: number
     stock: number
     slug: string
-    image: {
-        ogImageUrl: string
-        gallery: string[]
+    gallery: {
+        ogImage: string
+        cover: string
+        hover: string
+        images: string[]
     }
 }
 
@@ -22,18 +24,6 @@ export interface CartProduct {
     image: string
 }
 
-
-export interface FrontPageProduct {
-    id: string
-    name: string
-    price: number
-    sale: number
-    slug: string
-    image: {
-        cover: string
-        hover: string
-    }
-}
 
 export interface ProductParams {
     params: {
