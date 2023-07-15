@@ -1,19 +1,22 @@
 "use client";
 
 import {useProducts} from "../../../lib/api";
-import {useRouter, useSearchParams} from "next/navigation";
+import {notFound, useRouter, useSearchParams} from "next/navigation";
 import SearchBar from "@/components/searchBar";
 import ProductGrid from "@/components/productGrid";
-import {useState} from "react";
+import {useCallback, useRef, useState} from "react";
 import Loading from "@/app/loading";
 
 
 export default function Page() {
-    const query = useSearchParams();
-    const router = useRouter();
+    const searchRef = useRef(null)
+    const [query, setQuery] = useState('')
+    const [active, setActive] = useState(false)
+    const router = useRouter()
 
-    const [searchQuery, setSearchQuery] = useState('Search')
-    const {products, isError, isLoading, mutate} = useProducts(query, {
+    const searchParams = useSearchParams();
+
+    const {products, isError, isLoading, mutate} = useProducts(searchParams, {
         revalidateOnFocus: false,
         revalidateOnMount: false,
         revalidateOnReconnect: false,
@@ -22,15 +25,39 @@ export default function Page() {
         refreshInterval: 0
     })
 
-    function handleSearch(query: string) {
-        setSearchQuery(query.toLowerCase())
-        router.push('/search?perPage=10&page=0&search=' + searchQuery, {shallow: true})
-    }
+    const onChange = useCallback((event: any) => {
+        const query = event.target.value;
+        setQuery(query);
+        if (query.length) {
+            router.push('/search?perPage=10&page=0&search=' + query, {shallow: true})
+            mutate()
+        }
+    }, [])
+
+    const onFocus = useCallback(() => {
+        setActive(true)
+        window.addEventListener('click', onClick)
+    }, [])
+
+    const onClick = useCallback((event: any) => {
+        // @ts-ignore
+        if (searchRef.current && !searchRef.current.contains(event.target)) {
+            setActive(false)
+            window.removeEventListener('click', onClick)
+        }
+    }, [])
 
     if (isLoading) return <Loading/>
 
-    return <div className="bg-white h-auto">
-        <SearchBar handleSearch={handleSearch} searchQuery={searchQuery} mutate={mutate}/>
-        {products && <ProductGrid products={products.data}/>}
+    if (isError) return notFound()
+
+    return <div className="bg-white h-screen">
+        <SearchBar
+            onChange={onChange}
+            onFocus={onFocus}
+            value={query}
+            searchRef={searchRef}
+        />
+        {products && !!products.data && products.data.length > 0 && (<ProductGrid products={products.data}/>)}
     </div>
 }

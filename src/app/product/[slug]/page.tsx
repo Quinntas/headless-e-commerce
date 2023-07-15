@@ -61,8 +61,8 @@ export default function Product({params}: ProductParams) {
     }
 
     return (
-        <>
-            {product && <section className="overflow-hidden bg-white py-1 font-poppins h-auto ">
+        <div className={"h-auto"}>
+            {product && <section className="overflow-hidden bg-white py-1 font-poppins ">
                 <div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
                     <div className="flex flex-wrap -mx-4">
                         <div className="w-full px-4 md:w-1/2 ">
@@ -72,6 +72,7 @@ export default function Product({params}: ProductParams) {
                                         width={0}
                                         height={0}
                                         sizes={"100vw"}
+                                        quality={80}
                                         src={product.gallery.ogImage}
                                         alt="og-image"
                                         className="object-cover w-full lg:h-full rounded"
@@ -82,13 +83,14 @@ export default function Product({params}: ProductParams) {
                                         <div className="w-1/2 p-2 sm:w-1/4" key={index}>
                                             <a
                                                 href="#"
-                                                className="block border border-orange-300 dark:border-transparent dark:hover:border-orange-300 hover:border-orange-300"
+                                                className="block border border-orange-300 border-transparent hover:border-black "
                                             >
                                                 <Image
                                                     width={0}
                                                     height={0}
                                                     sizes={"100vw"}
                                                     src={image}
+                                                    quality={60}
                                                     alt={'"gallery-image-" + index'}
                                                     className="object-cover w-full lg:h-20 rounded"
                                                 />
@@ -181,6 +183,6 @@ export default function Product({params}: ProductParams) {
                     </div>
                 </div>
             </section>}
-        </>
+        </div>
     );
 }

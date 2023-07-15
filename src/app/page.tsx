@@ -20,7 +20,7 @@ export default function Home() {
             <Head>
                 <Link rel="preload" href="/api/product" as="fetch"/>
             </Head>
-            {products && <section className="bg-white h-full w-full">
+            {products && <section className="bg-white h-screen w-full">
                 <ProductGrid products={products.data}/>
             </section>}
         </>
