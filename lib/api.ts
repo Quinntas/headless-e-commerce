@@ -31,7 +31,10 @@ export function useProducts(queryParams?: ReadonlyURLSearchParams | URLSearchPar
         mutate
     } = useSWR<PaginatedProducts, Error>(
         `${config.API_URL}/store/products`,
-        url => fetcher(withQuery(url, makeQuery(queryParams)), {method: 'GET',}),
+        url => fetcher(withQuery(url, makeQuery(queryParams)), {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json', cache: 'reload'}
+        }),
         swrOptions)
     return {
         products: data,

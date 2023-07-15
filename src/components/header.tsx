@@ -16,7 +16,7 @@ export default function Header() {
     }
 
     return <nav>
-        <div className="bg-white">
+        <section className="bg-white ">
             <div className=" flex items-center pt-6 pl-4 pr-4 mx-auto max-w-7xl ">
                 <div className="flex flex-1">
                     <Link href='/'>
@@ -36,6 +36,6 @@ export default function Header() {
                 </div>
             </div>
             <CartModal modalStateChange={turnOffModal} modalState={showCartModal}/>
-        </div>
+        </section>
     </nav>
 }

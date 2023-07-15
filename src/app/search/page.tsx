@@ -51,7 +51,7 @@ export default function Page() {
 
     if (isError) return notFound()
 
-    return <div className="bg-white h-screen">
+    return <div className="bg-white h-auto">
         <SearchBar
             onChange={onChange}
             onFocus={onFocus}

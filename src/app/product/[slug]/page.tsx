@@ -61,8 +61,8 @@ export default function Product({params}: ProductParams) {
     }
 
     return (
-        <div className={"h-auto"}>
-            {product && <section className="overflow-hidden bg-white py-1 font-poppins ">
+        <section className={"h-full"}>
+            {product && <div className="overflow-hidden bg-white py-1 font-poppins ">
                 <div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
                     <div className="flex flex-wrap -mx-4">
                         <div className="w-full px-4 md:w-1/2 ">
@@ -182,7 +182,7 @@ export default function Product({params}: ProductParams) {
                         </div>
                     </div>
                 </div>
-            </section>}
-        </div>
+            </div>}
+        </section>
     );
 }

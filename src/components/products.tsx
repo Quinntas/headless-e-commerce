@@ -8,7 +8,7 @@ export default function Products({products}: { products: Product[] }) {
             {products.map((product) => (
                 <Link key={product.id} href={"/product/" + product.slug} className="group  w-full h-full">
                     <div
-                        className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-white flex-col shadow ">
+                        className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded bg-white flex-col shadow ">
                         <Image
                             width={0}
                             height={0}
@@ -17,7 +17,7 @@ export default function Products({products}: { products: Product[] }) {
                             loading="lazy"
                             src={product.gallery.cover}
                             alt={'product_image_' + product.id}
-                            className="h-full w-full object-cover object-center opacity-100 transition delay-50  group-hover:opacity-0"
+                            className=" object-cover object-center opacity-100 transition delay-50  group-hover:opacity-0"
                         />
                         <Image
                             width={0}
@@ -27,11 +27,17 @@ export default function Products({products}: { products: Product[] }) {
                             loading="lazy"
                             src={product.gallery.hover}
                             alt={'product_image_two_' + product.id}
-                            className="h-full w-full object-cover object-center opacity-0 transition  delay-50 group-hover:opacity-100"
+                            className=" object-cover object-center opacity-0 transition  delay-50 group-hover:opacity-100"
                         />
                     </div>
                     <h3 className="mt-4 text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">{product.name}</h3>
-                    <p className="mt-1 text-lg font-medium text-gray-900">R$ {product.price}</p>
+                    <div className={"flex gap-2"}>
+                        <p className="mt-1 text-lg font-medium text-gray-900">R$ {product.sale}</p>
+                        {
+                            product.sale !== product.price && <span
+                                className="mt-1 text-lg font-normal text-gray-500 line-through ">R$ {product.price}</span>
+                        }
+                    </div>
                 </Link>
             ))}
         </>

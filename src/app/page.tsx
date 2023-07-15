@@ -1,7 +1,5 @@
 "use client";
 
-import Head from "next/head";
-import Link from "next/link";
 import Loading from "@/components/loading";
 import ProductGrid from "@/components/productGrid";
 import {useFrontPageProducts} from "../../lib/api";
@@ -17,10 +15,7 @@ export default function Home() {
 
     return (
         <>
-            <Head>
-                <Link rel="preload" href="/api/product" as="fetch"/>
-            </Head>
-            {products && <section className="bg-white h-screen w-full">
+            {products && <section className="bg-white ">
                 <ProductGrid products={products.data}/>
             </section>}
         </>

@@ -27,11 +27,13 @@ export default function RootLayout({children}: { children: ReactNode }) {
         <html lang="pt">
         <body className={inter.className}>
         <Providers>
-            <Header/>
-            <Suspense>
-                <main>{children}</main>
-            </Suspense>
-            <Footer/>
+            <div className={"flex flex-col justify-between h-auto w-auto"}>
+                <Header/>
+                <Suspense>
+                    <main>{children}</main>
+                </Suspense>
+                <Footer/>
+            </div>
         </Providers>
         </body>
         </html>
