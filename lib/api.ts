@@ -33,7 +33,7 @@ export function useProducts(queryParams?: ReadonlyURLSearchParams | URLSearchPar
         `${config.API_URL}/store/products`,
         url => fetcher(withQuery(url, makeQuery(queryParams)), {
             method: 'GET',
-            headers: {'Content-Type': 'application/json', cache: 'reload'}
+            headers: {'Content-Type': 'application/json', cache: 'no-cache'}
         }),
         swrOptions)
     return {
