@@ -4,7 +4,7 @@ import {useProducts} from "../../../lib/api";
 import {notFound, useRouter, useSearchParams} from "next/navigation";
 import SearchBar from "@/components/searchBar";
 import ProductGrid from "@/components/productGrid";
-import {useCallback, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import Loading from "@/app/loading";
 
 
@@ -20,16 +20,17 @@ export default function Page() {
         revalidateOnFocus: false,
         revalidateOnMount: false,
         revalidateOnReconnect: false,
+        revalidateIfStale: false,
         refreshWhenOffline: false,
         refreshWhenHidden: false,
-        refreshInterval: 0
+        refreshInterval: 500
     })
 
     const onChange = useCallback((event: any) => {
         const query = event.target.value;
         setQuery(query);
         if (query.length) {
-            router.push('/search?perPage=10&page=0&search=' + query, {shallow: true})
+            router.push('/search?perPage=20&page=0&search=' + query, {shallow: true})
             mutate()
         }
     }, [])
@@ -47,9 +48,14 @@ export default function Page() {
         }
     }, [])
 
+    useEffect(() => {
+        router.push('/search?perPage=20&page=0&search=', {shallow: true})
+    }, [])
+
     if (isLoading) return <Loading/>
 
     if (isError) return notFound()
+
 
     return <div className="bg-white h-auto">
         <SearchBar
@@ -58,6 +64,6 @@ export default function Page() {
             value={query}
             searchRef={searchRef}
         />
-        {products && !!products.data && products.data.length > 0 && (<ProductGrid products={products.data}/>)}
+        {products && active && !!products.data && products.data.length > 0 && (<ProductGrid products={products.data}/>)}
     </div>
 }

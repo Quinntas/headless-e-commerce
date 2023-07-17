@@ -16,19 +16,14 @@ export default function Product({params}: ProductParams) {
     const {product, isError, isLoading} = useProduct(params.slug);
     const [quantity, setQuantity] = useState(1);
 
-    if (isLoading) return <Loading/>;
-
-    if (isError) notFound()
-
     function countProductQuantityInCart() {
         const foundIndex = products.findIndex(product => product.slug === product.slug);
         if (foundIndex === -1) return 0;
         return products[foundIndex].quantity;
     }
 
-
     function handleDownClick() {
-        if (quantity - 1 <= 0) {
+        if (quantity - 1 <= 1) {
             setQuantity(1);
             return;
         }
@@ -59,6 +54,10 @@ export default function Product({params}: ProductParams) {
         }
         dispatch(increment(cartProduct))
     }
+
+    if (isLoading) return <Loading/>;
+
+    if (isError) notFound()
 
     return (
         <section className={"h-full"}>

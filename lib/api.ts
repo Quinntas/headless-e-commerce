@@ -35,7 +35,10 @@ export function useProducts(queryParams?: ReadonlyURLSearchParams | URLSearchPar
             method: 'GET',
             headers: {'Content-Type': 'application/json', cache: 'no-cache'}
         }),
-        swrOptions)
+        {
+            ...swrOptions,
+            refreshInterval: 500
+        })
     return {
         products: data,
         isLoading,
@@ -57,8 +60,10 @@ export function useProduct(slug: string) {
     const {data, error, isLoading} = useSWR<Product, Error>(
         `${config.API_URL}/store/product`,
         url => fetcher(url + '?slug=' + slug, {method: 'GET',}),
+        {
+            refreshInterval: 500,
+        }
     )
-    console.log(data)
     return {
         product: data,
         isLoading,
